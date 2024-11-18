@@ -17,14 +17,16 @@ public class ItensCarrinho {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idItensCarrinho;
+    private long idItensCarrinho;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="cart_id", nullable=false)
+    @JoinColumn(name="cartId", nullable=false)
     private Carrinho carrinho;
 
+    @Column
     private long produtoId;
 
+    @Column
     private float quantidade;
 
 }

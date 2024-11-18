@@ -2,6 +2,7 @@ package com.challenge.eshop.service.impl;
 
 import com.challenge.eshop.dto.*;
 import com.challenge.eshop.entity.Carrinho;
+import com.challenge.eshop.entity.ItensCarrinho;
 import com.challenge.eshop.exception.ResourceNotFoundException;
 import com.challenge.eshop.mapper.CarrinhoMapper;
 import com.challenge.eshop.mapper.ProdutoMapper;
@@ -48,13 +49,11 @@ public class CarrinhoServiceImpl implements CarrinhoService {
     }
 
     @Override
-    public CarrinhoDto update(long cartId, long userId, List<ProdutoDto> listaProdutos) {
+    public CarrinhoDto update(long cartId, long userId, List<ItensCarrinho> listaItens) {
         Carrinho carrinho = carrinhoRepository.FindByCartIdAndUserId(cartId, userId)
                 .orElseThrow(() -> new ResourceNotFoundException("Carrinho não encotrado: " + cartId));
 
-        carrinho.setListaProdutos(listaProdutos.stream()
-                .map(p -> ProdutoMapper.mapToEntity(p))
-                .collect(Collectors.toList()));
+        carrinho.setListaItens(listaItens);
 
         Carrinho updated = carrinhoRepository.save(carrinho);
 

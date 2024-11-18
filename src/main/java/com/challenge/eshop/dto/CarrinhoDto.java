@@ -19,6 +19,6 @@ public class CarrinhoDto {
     private long cartId;
     private User user;
     private List<ItensCarrinho> listaItens;
-    private Pedido pedido;
+    private long pedidoId;
 
 }

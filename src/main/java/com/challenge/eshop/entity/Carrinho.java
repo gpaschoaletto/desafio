@@ -22,10 +22,10 @@ public class Carrinho {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private User user;
 
-    @OneToMany(mappedBy="cart")
-    private List<ItensCarrinho> listaProdutos;
+    @OneToMany(mappedBy="carrinho")
+    private List<ItensCarrinho> listaItens;
 
-    @OneToOne
+    @Column
     private long pedidoId;
 
 }

@@ -4,6 +4,7 @@ import com.challenge.eshop.config.JwtService;
 import com.challenge.eshop.dto.CarrinhoDto;
 import com.challenge.eshop.dto.CriarCarrinhoRequest;
 import com.challenge.eshop.dto.ProdutoDto;
+import com.challenge.eshop.entity.ItensCarrinho;
 import com.challenge.eshop.service.interfaces.CarrinhoService;
 import com.challenge.eshop.service.interfaces.UserService;
 import lombok.AllArgsConstructor;
@@ -46,10 +47,10 @@ public class CarrinhoController {
     }
 
     @PutMapping("{cartId}")
-    public ResponseEntity<CarrinhoDto> updateCart(@PathVariable("cartId") Long cartId, @RequestBody List<ProdutoDto> produtos,
+    public ResponseEntity<CarrinhoDto> updateCart(@PathVariable("cartId") Long cartId, @RequestBody List<ItensCarrinho> listaItens,
                                                   @RequestHeader("Authorization") String token){
         String email = jwtService.getEmail(token);
-        CarrinhoDto CarrinhoDto = carrinhoService.update(cartId, userService.getByEmail(email).getUserId(), produtos);
+        CarrinhoDto CarrinhoDto = carrinhoService.update(cartId, userService.getByEmail(email).getUserId(), listaItens);
         return ResponseEntity.ok(CarrinhoDto);
     }
 

@@ -8,8 +8,8 @@ public class CarrinhoMapper {
         return new CarrinhoDto(
             carrinho.getCartId(),
             carrinho.getUser(),
-            carrinho.getListaProdutos(),
-            carrinho.getPedido()
+            carrinho.getListaItens(),
+            carrinho.getPedidoId()
         );
     }
 
@@ -17,8 +17,8 @@ public class CarrinhoMapper {
         return new Carrinho(
             carrinhoDto.getCartId(),
             carrinhoDto.getUser(),
-            carrinhoDto.getListaProdutos(),
-            carrinhoDto.getPedido()
+            carrinhoDto.getListaItens(),
+            carrinhoDto.getPedidoId()
         );
     }
 }
